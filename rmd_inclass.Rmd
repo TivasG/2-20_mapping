@@ -1,0 +1,26 @@
+---
+title: "2/20/2020_class_map"
+author: "Tivas Gupta"
+date: "2/20/2020"
+output: html_document
+---
+
+```{r}
+library(tidycensus)
+census_api_key("9f9584127dd506cdaf80bdb78927e9c01c12f2b8", install = TRUE)
+```
+
+```{r}
+racevars <- c(White = "B02001_002", 
+              Black = "B02001_003", 
+              Asian = "B02001_005",
+              Hispanic = "B03003_003")
+harris <- get_acs(geography = "tract",
+                  variables = racevars, 
+                  year = 2018,
+                  state = "TX",
+                  county = "Harris County",
+                  geometry = TRUE,
+                  summary_var = "B02001_001") 
+```
+
